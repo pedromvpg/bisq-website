@@ -1,6 +1,5 @@
 $( document ).ready( function() {
 
-
     /**************************************************
     detect os to show correct download links
     **************************************************/
@@ -55,10 +54,6 @@ $( document ).ready( function() {
         }
     });
 
-    $( '.dl-win64, .dl-mac, .dl-deb64, .dl-rpm64' ).on( 'click', function() {
-        sendAnalytic( $(this).attr('class').split('-').pop().split(" ").shift() );
-    });
-
     //change dom to show downloads for the specific os
     function showOSDownloads( os ) {
         $( '.dl-' + os ).addClass( 'selected' );
@@ -72,20 +67,15 @@ $( document ).ready( function() {
             downloadLink = downloadLink.replace( /<site_url_placeholder>/g, siteURL );
         } else {
             downloadLink = downloadLink.replace( /<bisq_version_placeholder>/g, bisqVersion );
-            sendAnalytic( osName );
         }
         location.href = downloadLink;
         return;
     }
 
-    //add virtual pageview and event tracking for download attempts
-    function sendAnalytic( platform ) {
-        ga( 'send', 'pageview', location.pathname + 'release' );
-        ga( 'send', 'event', 'Release Build', 'download', platform );
-        return;
-    }
+    /**************************************************
+    hover actions for the "how to get started" section
+    **************************************************/
 
-    //How to get started
     $('.step').on({
         mouseenter: function () {
             $('.step').css('opacity', 0.5),
@@ -95,6 +85,7 @@ $( document ).ready( function() {
         },
         mouseout: function () {}
     });
+<<<<<<< HEAD:js/scripts.js
 
 
     //FAQ Accordion
@@ -158,4 +149,6 @@ $( document ).ready( function() {
       return;
     });
 
+=======
+>>>>>>> ede21155cef9129bcd868d8744b39d1d4b6c527a:js/home.js
 });
